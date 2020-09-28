@@ -1,0 +1,223 @@
+﻿<Window x:Class="ObmenApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ObmenApp"
+        mc:Ignorable="d"
+        Title="Обменный пункт" Height="481" Width="894.5" Background="#FF724AC9">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60*"/>
+            <RowDefinition  Height="281*"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FF724AC9" Offset="0.967"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+            <TextBlock HorizontalAlignment="Center" Margin="0 15 0 0" VerticalAlignment="Center" FontSize="30" FontFamily="Dubai Medium">
+                <TextBlock.Foreground>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="#FFFF0E0E"/>
+                    </LinearGradientBrush>
+                </TextBlock.Foreground>Обмен валюты</TextBlock>
+        </StackPanel>
+        <TabControl  Grid.Row="1">
+            <TabItem Header="Покупка валюты">
+                <Grid Background="#FFE5E5E5">
+                    <StackPanel  Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <TextBlock FontFamily="Open Sans Light" FontSize="20" Margin="5">Имя:</TextBlock>
+                            <TextBox Name="Name1"  FontFamily="Open Sans Light" Width="200" Height="24" FontSize="19"></TextBox>
+                        </StackPanel>
+                        <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <TextBlock FontFamily="Open Sans Light" FontSize="20" Margin="5">Фамилия:</TextBlock>
+                            <TextBox Name="Surname1"  FontFamily="Open Sans Light" Width="200" Height="24" FontSize="19"></TextBox>
+                        </StackPanel>
+                        <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <TextBlock FontFamily="Open Sans Light" FontSize="20" Margin="5">Серия и номер паспорта:</TextBlock>
+                            <TextBox Name="Passport1"  FontFamily="Open Sans Light" Width="200" Height="24" FontSize="19"></TextBox>
+                        </StackPanel>
+                        <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <TextBlock FontFamily="Open Sans Light" FontSize="20" Margin="5">Получено:</TextBlock>
+                            <TextBox Name="BuyStroka"  FontFamily="Open Sans Light" Width="160" Height="24" FontSize="19" Margin="5" TextChanged="BuyStroka_TextChanged"></TextBox>
+                            <ComboBox  Width="53" Height="26" Name="CB1" SelectionChanged="CB1_SelectionChanged">
+                                <ComboBoxItem>USD</ComboBoxItem>
+                                <ComboBoxItem>EUR</ComboBoxItem>
+                                <ComboBoxItem>UAH</ComboBoxItem>
+                                <ComboBoxItem>GBP</ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <TextBlock FontFamily="Open Sans Light" FontSize="20"  Margin="5">Итого отдать клиенту:</TextBlock>
+                            <TextBox Name="Summ1" FontFamily="Open Sans Light" IsReadOnly="True" Width="165" FontSize="19" Margin="5" >0</TextBox>
+                            <TextBlock FontFamily="Open Sans Light" FontSize="20"   Margin="5" >RUB</TextBlock>
+
+                        </StackPanel>
+                        <Button Margin="10" Name="BtnOk" Width="170" Height="40" FontSize="18" Click="BtnOk_Click" >Совершить обмен</Button>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Продажа валюты">
+                <Grid Background="#FFE5E5E5">
+                    <StackPanel  Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <TextBlock FontFamily="Open Sans Light" FontSize="20" Margin="5">Имя:</TextBlock>
+                            <TextBox Name="Name2"  FontFamily="Open Sans Light" Width="200" Height="24" FontSize="19"></TextBox>
+                        </StackPanel>
+                        <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <TextBlock FontFamily="Open Sans Light" FontSize="20" Margin="5">Фамилия:</TextBlock>
+                            <TextBox Name="Surname2"  FontFamily="Open Sans Light" Width="200" Height="24" FontSize="19"></TextBox>
+                        </StackPanel>
+                        <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <TextBlock FontFamily="Open Sans Light" FontSize="20" Margin="5">Серия и номер паспорта:</TextBlock>
+                            <TextBox Name="Passport2"  FontFamily="Open Sans Light" Width="200" Height="24" FontSize="19"></TextBox>
+                        </StackPanel>
+                        <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <TextBlock FontFamily="Open Sans Light" FontSize="20" Margin="5">Получено:</TextBlock>
+
+                            <TextBox Name="SellStroka"  FontFamily="Open Sans Light" Width="154" Height="24" FontSize="19" Margin="5" TextChanged="SellStroka_TextChanged" ></TextBox>
+                            <TextBlock FontFamily="Open Sans Light" FontSize="20"  Margin="5" >RUB</TextBlock>
+
+                        </StackPanel>
+                        <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <TextBlock FontFamily="Open Sans Light" FontSize="20"  Margin="5">Итого отдать клиенту:</TextBlock>
+                            <TextBox Name="Summ2" FontFamily="Open Sans Light" IsReadOnly="True" Width="150"  FontSize="19" Margin="5" >0</TextBox>
+                            <ComboBox  Width="60" Height="25" Name="CB2" SelectionChanged="CB2_SelectionChanged" >
+                                <ComboBoxItem>USD</ComboBoxItem>
+                                <ComboBoxItem>EUR</ComboBoxItem>
+                                <ComboBoxItem>UAH</ComboBoxItem>
+                                <ComboBoxItem>GBP</ComboBoxItem>
+                            </ComboBox>
+
+                        </StackPanel>
+                        <Button Margin="10" Name="BtnOk2" Width="170" Height="40" FontSize="18" Click="BtnOk2_Click" >Совершить обмен</Button>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem  Header="История обменов" GotFocus="TabItem_GotFocus">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid Name="History" VerticalAlignment="Stretch"  HorizontalAlignment="Stretch" AutoGenerateColumns="False" ColumnWidth="*" CanUserAddRows="False" CanUserDeleteRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="№ операции" Binding="{Binding IdOperation}" />
+                            <DataGridTemplateColumn Header="Клиент">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock>
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="{}{0} {1}">
+                                                    <Binding Path="Client.FirstName" />
+                                                    <Binding Path="Client.SurName" />
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTextColumn Header="Курс покупки" Binding="{Binding BuyRate}" />
+                            <DataGridTextColumn Header="Курс продажи" Binding="{Binding SellRate}" />
+                            <DataGridTemplateColumn Header="Тип операции">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock>
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="{}{0} {1}">
+                                                    <Binding Path="Operation" />
+                                                    <Binding Path="Value" />
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Сумма">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock>
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="{}{0} {1}">
+                                                    <Binding Path="CountMoney" />
+                                                    <Binding Path="Value2" />
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Header="Дата" Binding="{Binding Date}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Настройка курса">
+                <Grid Background="#FFE5E5E5">
+                    <GroupBox x:Name="groupBox" Header="Покупка" HorizontalAlignment="Left" Height="164" Margin="25" VerticalAlignment="Top" Width="212">
+                        <StackPanel Margin="10 10 0 0" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Vertical">
+                            <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
+                                <TextBlock Margin="0 0 20 0"  FontSize="15">USD</TextBlock>
+                                <TextBox Name="UsdBuy" Width="60" Height="20"/>
+                                <TextBlock Margin="5 0 0 0"  FontSize="15">RUB</TextBlock>
+                            </StackPanel>
+                            <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
+                                <TextBlock Margin="0 0 20 0" FontSize="15">EUR</TextBlock>
+                                <TextBox Name="EurBuy" Width="60" Height="20"/>
+                                <TextBlock  Margin="5 0 0 0"  FontSize="15">RUB</TextBlock>
+                            </StackPanel>
+                            <StackPanel  Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
+                                <TextBlock  Margin="0 0 20 0" FontSize="15">UAH</TextBlock>
+                                <TextBox Name="UahBuy" Width="60" Height="20"/>
+                                <TextBlock   Margin="5 0 0 0" FontSize="15">RUB</TextBlock>
+                            </StackPanel>
+                            <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
+                                <TextBlock Margin="0 0 20 0" FontSize="15">GBP</TextBlock>
+                                <TextBox  Name="GbpBuy" Width="60" Height="20"/>
+                                <TextBlock  Margin="5 0 0 0"  FontSize="15">RUB</TextBlock>
+                            </StackPanel>
+
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox  Header="Продажа" HorizontalAlignment="Right" Height="164" Margin="25" VerticalAlignment="Top" Width="212">
+                        <StackPanel Margin="10 10 0 0" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Vertical">
+                            <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
+                                <TextBlock Margin="0 0 20 0"  FontSize="15">USD</TextBlock>
+                                <TextBox  Name="UsdSell" Width="60" Height="20"/>
+                                <TextBlock Margin="5 0 0 0"  FontSize="15">RUB</TextBlock>
+                            </StackPanel>
+                            <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
+                                <TextBlock Margin="0 0 20 0" FontSize="15">EUR</TextBlock>
+                                <TextBox Name="EurSell"  Width="60" Height="20"/>
+                                <TextBlock  Margin="5 0 0 0"  FontSize="15">RUB</TextBlock>
+                            </StackPanel>
+                            <StackPanel  Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
+                                <TextBlock  Margin="0 0 20 0" FontSize="15">UAH</TextBlock>
+                                <TextBox Name="UahSell" Width="60" Height="20"/>
+                                <TextBlock   Margin="5 0 0 0" FontSize="15">RUB</TextBlock>
+                            </StackPanel>
+                            <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
+                                <TextBlock Margin="0 0 20 0" FontSize="15">GBP</TextBlock>
+                                <TextBox Name="GbpSell"  Width="60" Height="20"/>
+                                <TextBlock  Margin="5 0 0 0"  FontSize="15">RUB</TextBlock>
+                            </StackPanel>
+
+                        </StackPanel>
+                    </GroupBox>
+                    <StackPanel Orientation="Vertical"></StackPanel>
+                    <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="15" Orientation="Horizontal">
+                        <TextBlock  FontSize="20">Последнее изменение:</TextBlock>
+                        <TextBlock Margin="4 0 20 0" Name="TimeLastEdit" FontSize="20"></TextBlock>
+
+                    </StackPanel>
+                    <Button Name="SaveCourseBtn" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Width="200" Height="35" Click="SaveBtn_Click">Сохранить</Button>
+
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
